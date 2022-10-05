@@ -15,10 +15,10 @@
     <!--Favicon-->
     <link href="{% static 'img/favicon.ico' %}" rel="shortcut icon">
     <!--Logo-->
-    <link href="{% static 'img/logo.ico' %}" rel="shortcut icon">
+    <link href="{% static 'img/logo-blue.ico' %}" rel="shortcut icon">
     <!--Static CSS-->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <title>Base</title>
+    <title> {% block title %} HSystem {%endblock title %} </title>
 </head>
 <body>
     <div class="wrapper">

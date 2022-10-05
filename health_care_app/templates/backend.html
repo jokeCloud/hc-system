@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+<!-- Title -->
+{% block title %} HSystem | Administrator {%endblock title %}
+
 <!-- Navbar content -->
 {% block navbar-content %}
 <i class="fas fa-hospital-user"></i>&nbsp;&nbsp; Patients
@@ -13,4 +16,7 @@
 <!-- ==================== Page content ==================== -->
 {% block content %}
 <h1 class="text-center text-success">BAckend Page</h1>
+<center>
+    <a href="{% url 'add_patient' %}" class="btn btn-dark text-light btn-bg" style="width: 150px;">Add New Patient</a>
+</center>
 {% endblock content %}
