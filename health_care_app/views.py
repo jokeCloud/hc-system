@@ -45,7 +45,16 @@ def add_patient(request):
             patient.gender = request.POST.get('gender')
             patient.note = request.POST.get('note')
             patient.save()
-            messages.success(request, 'Patient added sucessfully!')
+            messages.success(request, 'Patient added successfully!')
             return HttpResponseRedirect('/backend')
     else:
         return render(request, 'add.html')
+
+
+# function to delete patient
+@login_required(login_url='login')
+def delete_patient(request, patient_id):
+    patient = Patients.objects.get(id=patient_id)
+    patient.delete()
+    messages.success(request, 'Patient removed successfully!')
+    return HttpResponseRedirect('/backend')
