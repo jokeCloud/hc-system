@@ -5,7 +5,7 @@
 
 <!-- Navbar content -->
 {% block navbar-content %}
-<i class="fas fa-stethoscope"></i>&nbsp;&nbsp; Patients
+<i class="fas fa-user-plus"></i>&nbsp;&nbsp; Patients
 {% endblock navbar-content %}
 
 <!-- Button on navbar -->
@@ -15,13 +15,11 @@
 
 <!-- Page Content -->
 {% block content %}
-<h1 class="text-center mt-3">register a patient</h1>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card card-body border-dark text-primary mt-4">
-                <span class="text-center">FILL OUT THE FORM BELOW</span>
+            <div class="card card-body border-dark mt-4">
+                <span class="text-center">{% block card-title %}<span class="text-primary">FILL OUT THE FORM BELOW</span>{% endblock card-title %}</span>
             </div>
 
             <!-- form -->
@@ -29,31 +27,33 @@
                 {% csrf_token %}
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Name</span>
-                    <input type="text" class="form-control" name="name" placeholder="pacient name" required>
+                    <input type="text" class="form-control" name="name" placeholder="pacient name" required {% block value-name %}{% endblock value-name %}> 
                 </div>
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Phone</span>
-                    <input type="text" class="form-control" name="phone" placeholder="pacient phone" required>
+                    <input type="text" class="form-control" name="phone" placeholder="pacient phone" required {% block value-phone %}{% endblock value-phone %}>
                 </div>
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Email</span>
-                    <input type="text" class="form-control" name="email" placeholder="pacient email" required>
+                    <input type="text" class="form-control" name="email" placeholder="pacient email" required {% block value-email %}{% endblock value-email %}>
                 </div>
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Age</span>
-                    <input type="text" class="form-control" name="age" placeholder="pacient age" required>
+                    <input type="text" class="form-control" name="age" placeholder="pacient age" required {% block value-age %}{% endblock value-age %}>
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <label class="input-group-text side-label">Gender</label>
-                    <select name="gender" class="form-select" required>
-                        <option value="" hidden>Select the gender</option>
+                    <select name="gender" class="form-select" required {% block value-gender %}{% endblock value-gender %}>
+                        {% block option %}
+                            <option value="" hidden>Select the gender</option>
+                        {% endblock option %}
                         <option disabled></option>
                         <option>M</option>
                         <option>F</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" name="note" rows="7" placeholder="Description is optional..."></textarea>
+                    <textarea class="form-control" name="note" rows="7" placeholder="Description is optional...">{% block value-note %}{% endblock value-note %}</textarea>
                 </div>
 
                 <div class="d-grid gap-2 mt-3">

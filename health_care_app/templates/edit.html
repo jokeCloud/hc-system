@@ -1,0 +1,30 @@
+{% extends 'add.html' %}
+
+<!-- Title -->
+{% block title %} HSystem | Patient {% endblock title %}
+
+
+<!-- Navbar content -->
+{% block navbar-content %}
+<i class="fas fa-user-edit"></i>&nbsp;&nbsp; {{ patient.name }}
+{% endblock navbar-content %}
+
+
+<!-- card title-->
+{% block card-title %}
+    Registered at: <span class="text-primary"><strong>{{ patient.created_at | date:'d/m/Y (H:i)' }}</strong></span>
+{% endblock card-title %}
+
+
+<!-- extends from add.html -->
+{% block value-name %} value="{{ patient.name }}" {% endblock value-name %}
+{% block value-phone %} value="{{ patient.phone }}" {% endblock value-phone %}
+{% block value-email %} value="{{ patient.email }}" {% endblock value-email %}
+{% block value-age %} value="{{ patient.age }}" {% endblock value-age %}
+
+{% block option  %}
+    <option value="" style="background-color: #d3d3d3; color: #007bff">{{ patient.gender }}</option>
+{% endblock option %}
+{% block value-gender %} value="{{ patient.gender }}" {% endblock value-gender %}
+
+{% block value-note %}{{ patient.note }}{% endblock value-note %}

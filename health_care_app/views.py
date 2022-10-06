@@ -58,3 +58,11 @@ def delete_patient(request, patient_id):
     patient.delete()
     messages.success(request, 'Patient removed successfully!')
     return HttpResponseRedirect('/backend')
+
+
+# function to access the patient individually
+@login_required(login_url='login')
+def patient(request, patient_id):
+    patient = Patients.objects.get(id=patient_id)
+    if patient != None:
+        return render(request, 'edit.html', {'patient': patient})

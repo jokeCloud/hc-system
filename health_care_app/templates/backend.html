@@ -55,7 +55,7 @@
                 <td>{{ patient.gender }}</td>
                 <td>{{ patient.created_at | date:'d/m/Y (H:i)'}}</td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-sm" title="Edit Patient">
+                    <a href="/patient/{{ patient.id }}" class="btn btn-primary btn-sm" title="Edit Patient">
                         <i class="fas fa-pen"></i>
                     </a>
                 </td>
