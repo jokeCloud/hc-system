@@ -15,16 +15,36 @@
     Registered at: <span class="text-primary"><strong>{{ patient.created_at | date:'d/m/Y (H:i)' }}</strong></span>
 {% endblock card-title %}
 
+<!--Extends ADD Button-->
+{% block Btn-content %}<i class="fas fa-hdd"></i>&nbsp;&nbsp;Save {% endblock Btn-content %}
 
-<!-- extends from add.html -->
+<!--Reset button-->
+{% block Btn-reset %}
+    <button type="reset" class="btn btn-secondary btn-sm">
+        <i class="fas fa-sync-alt"></i>&nbsp;&nbsp; Reset
+    </button>
+{% endblock Btn-reset %}
+
+<!--Action form-->
+{% block Action %}
+    action="/edit_patient"
+{% endblock Action %}
+
+
+<!-- extends all <inputs> -->
 {% block value-name %} value="{{ patient.name }}" {% endblock value-name %}
 {% block value-phone %} value="{{ patient.phone }}" {% endblock value-phone %}
 {% block value-email %} value="{{ patient.email }}" {% endblock value-email %}
 {% block value-age %} value="{{ patient.age }}" {% endblock value-age %}
 
 {% block option  %}
-    <option value="" style="background-color: #d3d3d3; color: #007bff">{{ patient.gender }}</option>
+    <option value="" style="background-color: #d3d3d3; color: #007bff; font-weight: bold;">{{ patient.gender }}</option>
 {% endblock option %}
 {% block value-gender %} value="{{ patient.gender }}" {% endblock value-gender %}
 
 {% block value-note %}{{ patient.note }}{% endblock value-note %}
+
+<!-- Input ID passed here -->
+{% block Id-hiden %}
+    <input type="hidden" name="id" value="{{ patient.id }}">
+{% endblock Id-hiden %}

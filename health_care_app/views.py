@@ -36,7 +36,12 @@ def backend(request):
 @login_required(login_url='login')
 def add_patient(request):
     if request.method == 'POST':
-        if request.POST.get('name') and request.POST.get('phone') and request.POST.get('email') and request.POST.get('age') and request.POST.get('gender') or request.POST.get('note'):  # noqa
+        if request.POST.get('name') \
+                and request.POST.get('phone') \
+                and request.POST.get('email') \
+                and request.POST.get('age') \
+                and request.POST.get('gender') \
+                or request.POST.get('note'):
             patient = Patients()
             patient.name = request.POST.get('name')
             patient.phone = request.POST.get('phone')
@@ -64,5 +69,24 @@ def delete_patient(request, patient_id):
 @login_required(login_url='login')
 def patient(request, patient_id):
     patient = Patients.objects.get(id=patient_id)
-    if patient != None:
+    if patient != None:  # noqa
         return render(request, 'edit.html', {'patient': patient})
+
+
+# function to edit patient
+@login_required(login_url='login')
+def edit_patient(request):
+    if request.method == 'POST':
+        patient = Patients.objects.get(id=request.POST.get('id'))
+        if patient != None:  # noqa
+
+            patient.name = request.POST.get('name')
+            patient.phone = request.POST.get('phone')
+            patient.email = request.POST.get('email')
+            patient.age = request.POST.get('age')
+            patient.gender = request.POST.get('gender')
+            patient.note = request.POST.get('note')
+            patient.save()
+
+            messages.success(request, 'Patient updaetd successfully!')
+            return HttpResponseRedirect('/backend')

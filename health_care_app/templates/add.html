@@ -23,7 +23,7 @@
             </div>
 
             <!-- form -->
-            <form action="/add_patient" method="POST" enctype="multipart/form-data" class="card p-3 border-dark mt-3">
+            <form {% block Action %} action="/add_patient" {% endblock Action %} method="POST" enctype="multipart/form-data" class="card p-3 border-dark mt-3">
                 {% csrf_token %}
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Name</span>
@@ -59,14 +59,24 @@
                 <div class="d-grid gap-2 mt-3">
                     <center>
                         <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="fas fa-plus"></i>&nbsp;&nbsp;Add
+                            {% block Btn-content %}<i class="fas fa-plus"></i>&nbsp;&nbsp;Add {% endblock Btn-content %}
                         </button>
                     </center>
+
                     <center>
-                    <a href="{% url 'backend' %}" class="btn btn-dark btn-sm"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Back</a>
-                </center>
+                        {% block Btn-reset %}
+
+                        {% endblock Btn-reset %}
+                    </center>
+
+                    <center>
+                        <a href="{% url 'backend' %}" class="btn btn-dark btn-sm"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Back</a>
+                    </center>
                 </div>
                
+                <!-- Input ID denied here -->
+                {% block Id-hiden %}{% endblock Id-hiden %}
+
             </form>
         </div>
     </div>
