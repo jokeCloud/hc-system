@@ -25,7 +25,7 @@ def backend(request):
     else:
         all_patient_list = Patients.objects.all().order_by('-created_at')
 
-    paginator = Paginator(all_patient_list, 10)
+    paginator = Paginator(all_patient_list, 8)
     page = request.GET.get('page')
     all_patient = paginator.get_page(page)
 
