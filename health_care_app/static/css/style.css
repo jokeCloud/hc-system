@@ -39,3 +39,10 @@ body {
 .side-label {
     width: 70px;
 }
+
+/* backend.html */
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}

@@ -4,16 +4,20 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.views.decorators.cache import cache_control
 
 from health_care_app.models import Patients
 
 
+# ========================= FRONTEND SECTION =========================
 # Function to render the frontend
 def frontend(request):
     return render(request, 'frontend.html')
 
 
+# ========================= BACKEND SECTION =========================
 # Function to render the backend
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='login')
 def backend(request):
     if 'q' in request.GET:
@@ -33,6 +37,7 @@ def backend(request):
 
 
 # Function to insert patient
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='login')
 def add_patient(request):
     if request.method == 'POST':
@@ -57,6 +62,7 @@ def add_patient(request):
 
 
 # function to delete patient
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='login')
 def delete_patient(request, patient_id):
     patient = Patients.objects.get(id=patient_id)
@@ -66,6 +72,7 @@ def delete_patient(request, patient_id):
 
 
 # function to access the patient individually
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='login')
 def patient(request, patient_id):
     patient = Patients.objects.get(id=patient_id)
@@ -74,6 +81,7 @@ def patient(request, patient_id):
 
 
 # function to edit patient
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='login')
 def edit_patient(request):
     if request.method == 'POST':

@@ -25,53 +25,50 @@
             <!-- form -->
             <form {% block Action %} action="/add_patient" {% endblock Action %} method="POST" enctype="multipart/form-data" class="card p-3 border-dark mt-3">
                 {% csrf_token %}
+                
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Name</span>
-                    <input type="text" class="form-control" name="name" placeholder="pacient name" required {% block value-name %}{% endblock value-name %}> 
+                    <input type="text" class="form-control" id="name" name="name" placeholder="pacient name" required {% block value-name %}{% endblock value-name %}> 
                 </div>
+                
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Phone</span>
-                    <input type="text" class="form-control" name="phone" placeholder="pacient phone" required {% block value-phone %}{% endblock value-phone %}>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="pacient phone" required {% block value-phone %}{% endblock value-phone %}>
                 </div>
+                
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Email</span>
-                    <input type="text" class="form-control" name="email" placeholder="pacient email" required {% block value-email %}{% endblock value-email %}>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="pacient email" required {% block value-email %}{% endblock value-email %}>
                 </div>
+                
                 <div class="input-group input-group-in mb-3">
                     <span class="input-group-text side-label">Age</span>
-                    <input type="text" class="form-control" name="age" placeholder="pacient age" required {% block value-age %}{% endblock value-age %}>
+                    <input type="text" class="form-control" maxlength="3" id="age" name="age" placeholder="pacient age" required {% block value-age %}{% endblock value-age %}>
                 </div>
+                
                 <div class="input-group input-group-sm mb-3">
                     <label class="input-group-text side-label">Gender</label>
-                    <select name="gender" class="form-select" required {% block value-gender %}{% endblock value-gender %}>
+                    <select name="gender" id="gender" class="form-select" required {% block value-gender %} {% endblock value-gender %}>
                         {% block option %}
                             <option value="" hidden>Select the gender</option>
                         {% endblock option %}
-                        <option disabled></option>
+                        <!--<option disabled></option>-->
                         <option>M</option>
                         <option>F</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <textarea class="form-control" name="note" rows="7" placeholder="Description is optional...">{% block value-note %}{% endblock value-note %}</textarea>
+                    <textarea class="form-control" name="note" rows="5" placeholder="Description is optional...">{% block value-note %}{% endblock value-note %}</textarea>
                 </div>
 
-                <div class="d-grid gap-2 mt-3">
-                    <center>
-                        <button type="submit" class="btn btn-primary btn-sm">
-                            {% block Btn-content %}<i class="fas fa-plus"></i>&nbsp;&nbsp;Add {% endblock Btn-content %}
-                        </button>
-                    </center>
-
-                    <center>
-                        {% block Btn-reset %}
-
-                        {% endblock Btn-reset %}
-                    </center>
-
-                    <center>
-                        <a href="{% url 'backend' %}" class="btn btn-dark btn-sm"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Back</a>
-                    </center>
+                <div class="d-grid gap-2 mt-2 d-md-block">                    
+                    <button type="submit" class="btn btn-primary btn-sm" id="btn-add">
+                        {% block Btn-content %}<i class="fas fa-plus"></i>&nbsp;&nbsp;Add {% endblock Btn-content %}
+                    </button>                    
+                    <a href="{% url 'backend' %}" class="btn btn-dark btn-sm"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Back</a>
+                    
+                    {% block Btn-reset %}{% endblock Btn-reset %}                   
                 </div>
                
                 <!-- Input ID denied here -->
