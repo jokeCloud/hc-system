@@ -23,6 +23,11 @@ function validateAll() {
         swal("Opss =|", "Phone field cannot be empty", "error");
         return false;
     }
+    //force users to input the last name
+    else if (name.split(' ').length < 2) {
+        swal("Opss =|", "The last name is required.", "error");
+        return false;
+    }
     else if (email == '') {
         swal("Opss =|", "Email field cannot be empty", "error");
         return false;
@@ -35,11 +40,11 @@ function validateAll() {
         swal("Opss =|", "Age field cannot be empty", "error");
         return false;
     }
-    else if (age > 120) {
-        swal("Denied =|", "The maximun age is 120 years old.", "error");
-        $("#age").val("");
-        return false;
-    }
+    //else if (age > 120) {
+    //    swal("Denied =|", "The maximun age is 120 years old.", "error");
+    //    $("#age").val("");
+    //    return false;
+    //}
     else if (gender == '') {
         swal("Opss =|", "Gender field cannot be empty", "error");
         return false;
@@ -82,7 +87,7 @@ $(document).ready(function () {
 // 5) Script to allow only number age
 $("#age").keyup(function () {
     if (!/^[0-9]*$/.test(this.value)) {
-        this.value = this.value.split(/[^0-9.]/).join('');
+        this.value = this.value.split(/[^0-9]/).join('');
     };
 });
 
@@ -98,3 +103,32 @@ $(document).ready(function () {
 });
 
 
+// 7) if input age has number greater than 120, auto clear(alternative option)
+$(document).ready(function () {
+    $("#age").keyup(function () {
+        var age = $("#age").val();
+        if (age > 120) {
+            $("#age").val("");
+            return false;
+        }
+    });
+});
+
+
+// 8) Prevent starting by zero in age field
+$("#age").on("input", function () {
+    if (/^0/.test(this.value)) {
+        this.value = this.value.replace(/^0/, "")
+    }
+})
+
+// 9) Prevent users registering fullname
+$(document).ready(function () {
+    $("#name").keyup(function () {
+        var name = $("#name").val();
+        if (name.split(' ').length == 3) {
+            swal("Opss!", "Put only first and last name.", "info");
+            $("#name").val("");
+        }
+    });
+});
