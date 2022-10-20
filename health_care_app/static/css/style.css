@@ -34,7 +34,7 @@ body {
 }
 
 /* --------------------------------------
-# PACIENT
+# PATIENT
 ---------------------------------------*/
 .side-label {
     width: 70px;
@@ -45,4 +45,85 @@ body {
 td {
     text-align: center;
     vertical-align: middle;
+}
+
+#no-data {
+    position: absolute;
+    top: 40%;
+    left: 13%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+}
+
+/* --------------------------------------
+# LOGIN
+---------------------------------------*/
+#heart {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+}
+
+
+/* --------------------------------------
+# BLINK HEART LOGIN
+---------------------------------------*/
+.blink-me {
+    animation: blinker 3.5s linear infinite;
+}
+
+@keyframes blinker {
+    90% {
+        opacity: 0;
+    }
+}
+
+/* --------------------------------------
+# CUSTOM SWEETALERT
+---------------------------------------*/
+/* All text 100% contered */
+.swal-text {
+    text-align: center;
+}
+
+/* Icon settings */
+.swal-icon--success:before,
+.swal-icon--success:after,
+.swal-icon--success__hide-corners {
+    background: none !important;
+}
+
+.swal-icon--success {
+    /* Border of the ring */
+    border-color: #007bff !important;
+}
+
+.swal-icon--success__line {
+    /* Animation */
+    background-color: #007bff;
+}
+
+/* Button settings */
+.swal-button {
+    padding: 7px 19px;
+    border-radius: 5px;
+    background-color: #007bff;
+    font-size: 12px;
+    border: 1px solid #007bff;
+}
+
+.swal-button:focus {
+    /* remove the silver border of the button */
+    box-shadow: none;
+}
+
+.swal-button:not([disabled]):hover {
+    /* hover effect on button */
+    background: transparent;
+    color: #111;
+    border: 1px solid #007bff;
 }

@@ -8,10 +8,22 @@
 <i class="fas fa-user-plus"></i>&nbsp;&nbsp; Patients
 {% endblock navbar-content %}
 
+<!-- Time -->
+{% block time %}
+<div class="col-sm">
+    <center>
+        <span style="color: #89cff0" id="clock"></span>
+    </center>
+</div>
+{% endblock time %}
+
 <!-- Button on navbar -->
 {% block nav-btn %}
-<a href="{% url 'logout' %}" class="btn btn-outline-danger border-light text-light btn-sm" id="btn-nav">Logout</a>
+<a class="btn btn-outline-danger border-light text-light btn-sm" id="btn-nav" data-toggle="modal" data-target="#logoutModal">Logout</a>
 {% endblock nav-btn %}
+
+<!-- footer coolor -->
+{% block footer %} style="color: #89cff0; text-decoration: none;"> {% endblock footer %}
 
 <!-- Page Content -->
 {% block content %}

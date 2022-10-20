@@ -19,13 +19,18 @@ function validateAll() {
         swal("Opss =|", "Name field cannot be empty", "error");
         return false;
     }
-    else if (phone == '') {
-        swal("Opss =|", "Phone field cannot be empty", "error");
-        return false;
-    }
     //force users to input the last name
     else if (name.split(' ').length < 2) {
         swal("Opss =|", "The last name is required.", "error");
+        return false;
+    }
+    else if (name == name.toUpperCase()) {
+        swal("Opss =|", "Name field be cannot uppercase", "error");
+        $("#name").val("");
+        return false;
+    }
+    else if (phone == '') {
+        swal("Opss =|", "Phone field cannot be empty", "error");
         return false;
     }
     else if (email == '') {
@@ -132,3 +137,18 @@ $(document).ready(function () {
         }
     });
 });
+
+// 10) Time running at realtime
+setInterval(function () {
+    var date = new Date();
+    $("#clock").html(
+        (date.getHours() < 10 ? '0' : '') + date.getHours() + ":" + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes() + ":" + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds()
+    );
+}, 500);
+
+// 11) if no patient, show a message
+var verify = $("#chk-td").length;
+if (verify == 0) {
+    $("#no-data").text("No patient found");
+}
+
