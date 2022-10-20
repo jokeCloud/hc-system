@@ -68,6 +68,13 @@ td {
     font-size: 22px;
 }
 
+#btn-enter {
+    width: 90px;
+}
+
+#title-login {
+    cursor: default;
+}
 
 /* --------------------------------------
 # BLINK HEART LOGIN
