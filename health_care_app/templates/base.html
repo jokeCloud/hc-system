@@ -28,9 +28,9 @@
         <header>
             <nav class="navbar navbar-expand-ld navbar-dark bg-dark">
                 <div class=col-sm>                    
-                    <a class="navbar-brand flex-grow-1" style="text-align: center; color: #fff; margin-left: 25px;">
+                    <a class="navbar-brand flex-grow-1" id="nav-content" style="text-align: center; color: #fff; margin-left: 25px;">
                         {% block navbar-content %}
-                        <i class="fas fa-briefcase-medical"></i>&nbsp;&nbsp;Mastery Hospital
+                        <i class="fas fa-briefcase-medical"></i>&nbsp;&nbsp;Hospital
                         {% endblock navbar-content %}
                     </a>
                 </div>
@@ -58,7 +58,7 @@
 
     <footer class="bg-dark text-center text-lg-start" id="footer" style="color: #fff;">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            Copyright &copy; {% now 'Y' %} Allright reserved | Made with 
+            Copyright &copy; {% now 'Y' %} <span id="allrights">Allrights reserved</span> | Made with 
             <i class="text-danger fas fa-heartbeat" style="font-size: 19px;"></i> by
             <a href="https://jokecloud.github.io/" target="_blank" {% block footer %} style="color: #0dcaf0; text-decoration: none;"> {% endblock footer %}emdev</a>
         </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="modal-body text-center">
                     <span class="text-danger"><i class="fas fa-sign-out-alt fa-3x mt-4"></i></span>
-                    <div class="mt-4 mb-4 text-danger">Are you sure want to exit the system?</div>
+                    <div class="mt-4 mb-4 text-danger confirm">Are you sure want to exit the system?</div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Cancel</button>
@@ -96,8 +96,7 @@
     <!-- Static JS -->
     <script src={% static 'js/script.js' %}></script>
     <!-- SweetAlert (frontend) -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
     <!-- Bootstrap 4 JS modal -->
     <!--deu conflito com o "jquery.inputmask" <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
