@@ -37,7 +37,7 @@ body {
 # PATIENT
 ---------------------------------------*/
 .side-label {
-    width: 70px;
+    width: 40px;
 }
 
 /* backend.html */
@@ -56,24 +56,31 @@ td {
     font-size: 22px;
 }
 
+#btn-add-smartphone {
+    display: none;
+}
+
 /* --------------------------------------
 # LOGIN
 ---------------------------------------*/
-#heart {
-    position: absolute;
-    top: 73%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    font-size: 22px;
+#title-login {
+    cursor: default;
+}
+
+#card-login {
+    width: 450px;
+}
+
+.login-border {
+    height: 430px;
+    border-top: .4rem solid #0dCAF0;
+    border-radius: 10px;
 }
 
 #btn-enter {
-    width: 90px;
-}
-
-#title-login {
-    cursor: default;
+    border-radius: 15px;
+    font-size: 17px;
+    width: 50%;
 }
 
 /* --------------------------------------
@@ -237,8 +244,12 @@ td {
     }
 
     #btn-enter {
-        width: 100%;
+        width: 50%;
         border-radius: 30px;
+    }
+
+    .text-small {
+        font-size: 12px;
     }
 }
 
@@ -278,11 +289,6 @@ td {
 
     #heart {
         font-size: 15px;
-    }
-
-    #btn-enter {
-        width: 100%;
-        border-radius: 30px;
     }
 
     .text-small {
@@ -341,12 +347,10 @@ td {
         font-size: 12px;
     }*/
 
+
+
     #info {
         font-size: 14px;
-    }
-
-    .side-label {
-        width: 75px;
     }
 
     #btn-add,
@@ -355,4 +359,22 @@ td {
         font-size: 12px;
     }
 
+    #card-login {
+        width: 99%;
+    }
+
+    #btn-enter {
+        font-size: 12px;
+        width: 50%;
+    }
+
+    #btn-add-smartphone {
+        display: inline;
+        width: 50px;
+        font-size: 11px;
+    }
+
+    #btn-add-desktop {
+        display: none;
+    }
 }

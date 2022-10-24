@@ -18,8 +18,19 @@
 
 <!-- =================== Page content =================== -->
 {% block content %}
-<div class="container mt-5">
-    <div class="card p-3 border-dark">
+
+<style>
+    body {
+        background-image: url("/static/img/login.jpg");
+        background-position: center 0 px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover; 
+    }
+</style>
+
+<div class="container mt-5" id="card-login">
+    <div class="card p-3 login-border">
         <a href="{% url 'admin:index' %}" class="btn btn-outline-dark mt-3" id="title-login"><i class="fas fa-lock"></i>&nbsp;&nbsp;RESTRICTED ACCESS</a>
         <form method="POST" autocomplete="off" novalidate action="">
             {% csrf_token %}
@@ -31,22 +42,18 @@
                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                 <input type="password" class="form-control text-small" name="password" placeholder="Password">
             </div>
-            <input type="submit" class="btn btn-info btn-sm mt-4 mb-3" id="btn-enter" value="Enter">
+            <div class="d-grid gap-2">
+                <center>
+                    <input type="submit" class="btn btn-info btn-sm mt-4 mb-3" id="btn-enter" value="Enter">
+                </center>
+            </div>
         </form>
+        <!-- Heart Pulse -->
+        <center class="mb-5">
+            <i class="text-danger fas fa-heartbeat fa-7x blink-me"></i>
+        </center>
     </div>
-
-    <!-- Message from backend -->
-    {% if form.errors %}
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        swal("Denied.", "Enter your data correctly.", "error")
-    </script>
-    {% endif %}
-
-    <center id="heart">
-        <i class="text-danger fas fa-heartbeat fa-8x mt-5 blink-me"></i>
-    </center>
+    
 
 </div> <!-- END // container -->
 {% endblock content %}

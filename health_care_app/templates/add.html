@@ -38,29 +38,29 @@
             <form {% block Action %} action="/add_patient" {% endblock Action %} method="POST" enctype="multipart/form-data" class="card p-3 border-dark mt-3">
                 {% csrf_token %}
                 
-                <div class="input-group input-group-in mb-2">
-                    <span class="input-group-text side-label text-small">Name</span>
+                <div class="input-group mb-2">
+                    <span class="side-label btn border-secondary bg-light text-small txt-sm"><i class="fas fa-user-alt"></i></span>
                     <input type="text" class="form-control text-small" maxlength="70"id="name" name="name" placeholder="pacient name" required {% block value-name %} {% endblock value-name %}> 
                 </div>
                 
-                <div class="input-group input-group-in mb-2">
-                    <span class="input-group-text side-label text-small">Phone</span>
+                <div class="input-group mb-2">
+                    <span class="side-label btn border-secondary bg-light text-small txt-sm"><i class="fas fa-phone-alt"></i></span>
                     <input type="text" class="form-control text-small" id="phone" name="phone" placeholder="pacient phone" required {% block value-phone %} {% endblock value-phone %}>
                 </div>
                 
-                <div class="input-group input-group-in mb-2">
-                    <span class="input-group-text side-label text-small">Email</span>
+                <div class="input-group mb-2">
+                    <span class="side-label btn border-secondary bg-light text-small txt-sm"><i class="fas fa-envelope"></i></span>
                     <input type="text" class="form-control text-small" maxlength="40"id="email" name="email" placeholder="pacient email" required {% block value-email %} {% endblock value-email %}>
                 </div>
                 
-                <div class="input-group input-group-in mb-2">
-                    <span class="input-group-text side-label text-small">Age</span>
+                <div class="input-group mb-2">
+                    <span class="side-label btn border-secondary bg-light text-small txt-sm"><i class="fab fa-creative-commons-by"></i></span>
                     <input type="text" class="form-control text-small" maxlength="3" id="age" name="age" placeholder="pacient age" required {% block value-age %} {% endblock value-age %}>
                 </div>
                 
-                <div class="input-group input-group-sm mb-2">
-                    <label class="input-group-text side-label"><span class="text-small">Gender</span></label>
-                    <select name="gender" id="gender" class="form-select" required {% block value-gender %}{% endblock value-gender %}>
+                <div class="input-group mb-2">
+                    <label><span class="side-label btn border-secondary bg-light text-small txt-sm" style="border-radius: 4px 0px 0px 4px;"><i class="fas fa-child"></i></span></label>
+                    <select name="gender" id="gender" class="form-select text-small" required {% block value-gender %}{% endblock value-gender %}>
                         {% block option %}
                             <option value="" hidden><span class="text-small">Select the gender</span></option>
                         {% endblock option %}
@@ -74,13 +74,18 @@
                     <textarea class="form-control text-small" name="note" maxlength="300" rows="5" placeholder="Description is optional...">{% block value-note %}{% endblock value-note %}</textarea>
                 </div>
 
-                <div class="d-grid gap-2 mt-2 d-md-block">                    
+                <div class="d-grid gap-2 mt-2 d-md-block">
+
                     <button type="submit" class="btn btn-primary btn-sm" id="btn-add">
                         {% block Btn-content %}<i class="fas fa-plus"></i>&nbsp;&nbsp;Add {% endblock Btn-content %}
                     </button>                    
-                    <a href="{% url 'backend' %}" class="btn btn-dark btn-sm" id="btn-back"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Back</a>
                     
-                    {% block Btn-reset %}{% endblock Btn-reset %}                   
+                    <button type="reset" class="btn btn-outline-secondary btn-sm" id="btn-reset">
+                        <i class="fas fa-sync-alt"></i>&nbsp;&nbsp; Reset
+                    </button>
+
+                    <a href="{% url 'backend' %}" class="btn btn-outline-danger btn-sm" id="btn-back"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Back</a>
+                    
                 </div>
                
                 <!-- Input ID denied here -->
