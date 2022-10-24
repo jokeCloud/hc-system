@@ -60,7 +60,9 @@
                     <th style="width: 8%;">Age</th>
                     <th style="width: 7%;">Gender</th>
                     <th style="width: 18%;">Registered</th>
+                    {% if request.user.is_superuser %}
                     <th style="width: 10%;" colspan="2">Action</th>
+                    {% endif %}
                 </tr>
             </thead>
             <!-- DATA FROM BACKEND -->
@@ -72,16 +74,18 @@
                 <td data-label="Age" id="responsive-border">{{ patient.age }}</td>
                 <td data-label="Gender" id="responsive-border">{{ patient.gender }}</td>
                 <td data-label="Date" id="responsive-border">{{ patient.created_at | date:'d/m/Y (H:i)'}}</td>
+                {% if request.user.is_superuser %}
                 <td>
                     <a id="edit-btn" href="/patient/{{ patient.id }}" class="btn btn-primary btn-sm" title="Edit Patient">
                         <i class="fas fa-pen"></i>
                     </a>
-                </td>
+                </td>                
                 <td>               
                     <a id="delete-btn" class="btn btn-danger btn-sm" title="Delete Patient" data-toggle="modal" data-target="#deleteModal{{ patient.pk }}">
                         <i class="fas fa-trash-alt"></i>
                     </a>                
                 </td>
+                {% endif %}
             </tr>
             <!-- delete modal confirmation -->
             <div class="modal fade" id="deleteModal{{ patient.pk }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
