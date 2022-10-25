@@ -23,7 +23,7 @@
 {% endblock nav-btn %}
 
 <!-- footer coolor -->
-{% block footer %} style="color: #89cff0; text-decoration: none;"> {% endblock footer %}
+{% block footer %} style="color: #89cff0; text-decoration: none; "> {% endblock footer %}
 
 <!-- ==================== Page content ==================== -->
 {% block content %}
@@ -117,11 +117,11 @@
     </center>
 
     <!-- pagination -->
-    <nav class="mt-4" aria-label="Page navigation example" id="pagination">
+    <nav class="" aria-label="Page navigation example" id="pagination">
         {% if patients.has_other_pages %}
-            <ul class="pagination justify-content-left">
+            <ul class="pagination mb-2 justify-content-left">
             {% if patients.has_previous %}
-                <a href="?page=1" class="btn btn-outline-primary mb-4" id="first" style="width: 60px; border-radius: 1px; border: 1px solid #d3d3d3;">First</a>
+                <a href="?page=1" class="btn btn-outline-primary" id="first" style="width: 60px; border-radius: 1px; border: 1px solid #d3d3d3;">First</a>
                 <li class="page-item"><a href="?page={{ patients.previous_page_number }}" class="page-link"><i class="fas fa-angle-double-left"></i></a></li>
             {% else %}
                 <li class="page-item disabled"></li>
@@ -137,7 +137,7 @@
             
             {% if patients.has_next %}
                 <li class="page-item"><a href="?page={{ patients.next_page_number }}" class="page-link"><i class="fas fa-angle-double-right"></i></a></li>
-                <a href="?page={{ patients.paginator.num_pages }}" class="btn btn-outline-primary mb-4" id="last" style="width: 60px; border-radius: 1px; border: 1px solid #d3d3d3; border-left: none;">Last</a>
+                <a href="?page={{ patients.paginator.num_pages }}" class="btn btn-outline-primary" id="last" style="width: 60px; border-radius: 1px; border: 1px solid #d3d3d3; border-left: none;">Last</a>
             {% else %}
                 <li class="page-item disabled"></li>
             {% endif %}
@@ -159,9 +159,9 @@
 
     <!-- if no patient, show message -->
     <span class="text-muted" id="no-data"></span>
-
+    <br><br><br>
 </div>
 
-<br>
+
 
 {% endblock content %}

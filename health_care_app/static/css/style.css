@@ -4,7 +4,7 @@
 html,
 body {
     height: 100%;
-    margin: 0;
+    /*margin: 0;*/
     max-width: 100%;
     overflow: hidden;
 }
@@ -29,8 +29,9 @@ body {
 
 #footer,
 .push {
-    height: 60px;
+    /* height: 60px; */
     font-size: 13px;
+    /*margin-top: 40px;*/
 }
 
 /* --------------------------------------
@@ -59,6 +60,7 @@ td {
 #btn-add-smartphone {
     display: none;
 }
+
 
 /* --------------------------------------
 # LOGIN
@@ -347,7 +349,9 @@ td {
         font-size: 12px;
     }*/
 
-
+    .pagination {
+        margin-top: 4px;
+    }
 
     #info {
         font-size: 14px;
@@ -377,4 +381,6 @@ td {
     #btn-add-desktop {
         display: none;
     }
+
+    #footer {}
 }
