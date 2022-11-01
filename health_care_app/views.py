@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.cache import cache_control
 
-from health_care_app.models import Patients
+from health_care_app.models import Call, Patients
 
 
 # ========================= FRONTEND SECTION =========================
@@ -105,3 +105,30 @@ def edit_patient(request):
 
             messages.success(request, 'Patient updaetd successfully!')
             return HttpResponseRedirect('/backend')
+
+
+# Support
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='login')
+def support(request):
+    if request.method == 'POST':
+
+        support = Call()
+
+        user = request.POST.get('user')
+        message = request.POST.get('message')
+        terms = request.POST.get('terms')
+        option = request.POST.get('option')
+        reason = request.POST.get('reason')
+
+        support.user = user
+        support.message = message
+        support.terms = terms
+        support.option = option
+        support.reason = reason
+
+        support.save()
+        messages.success(request, 'We will review your request.')
+        return HttpResponseRedirect('/backend')
+    else:
+        return HttpResponseRedirect('/backend')

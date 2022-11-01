@@ -23,6 +23,13 @@
     action="/edit_patient"
 {% endblock Action %}
 
+<!--  ======= Block id hidden here =======  -->
+{% block value-id %}
+<div class="input-group mb-2">
+    <span class="side-label btn border-secondary bg-light text-small txt-sm"><i class="fas fa-key"></i></span>
+    <input type="text" class="form-control text-small" name="id" value="{{ patient.id }}" readonly> 
+</div>
+{% endblock value-id %}
 
 <!-- extends all <inputs> -->
 {% block value-name %} value="{{ patient.name }}" {% endblock value-name %}
@@ -38,7 +45,8 @@
 
 {% block value-note %}{{ patient.note }}{% endblock value-note %}
 
-<!-- Input ID passed here -->
+<!-- Input ID passed here 
 {% block Id-hiden %}
     <input type="hidden" name="id" value="{{ patient.id }}">
 {% endblock Id-hiden %}
+-->

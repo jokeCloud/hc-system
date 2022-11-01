@@ -153,3 +153,10 @@ if (verify == 0) {
     $("#no-data").text("No patient found");
 }
 
+// 12) Close offcanvas when a button is clicked
+$(document).ready(function () {
+    jQuery("#offcanvasRight, .offcanvas-body a").click(function () {
+        console.log($(this).attr("href"));
+        jQuery('.offcanvas').offcanvas('hide');
+    });
+});

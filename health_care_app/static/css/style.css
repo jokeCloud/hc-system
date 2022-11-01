@@ -19,6 +19,22 @@ body {
     margin-right: 25px;
 }
 
+#sidebar {
+    float: right;
+    margin-right: 25px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
+#offcanvasRight {
+    background-color: #212529;
+}
+
+#offcanvasRightLabel {
+    color: #c7c8c9;
+}
+
 /* --------------------------------------
 # FOOTER
 ---------------------------------------*/
@@ -61,6 +77,10 @@ td {
     display: none;
 }
 
+#btn-cancel,
+#btn-proceed {
+    width: 70px;
+}
 
 /* --------------------------------------
 # LOGIN

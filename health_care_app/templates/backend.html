@@ -19,8 +19,26 @@
 
 <!-- Button on navbar -->
 {% block nav-btn %}
-<a class="btn btn-outline-danger border-light text-light btn-sm" id="btn-nav" data-toggle="modal" data-target="#logoutModal">Logout</a>
+<div class="text-light" id="sidebar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+    <i class="fas fa-bars"></i>
+</div>
 {% endblock nav-btn %}
+
+<!-- old button
+    <a class="btn btn-outline-danger border-light text-light btn-sm" id="btn-nav">Logout</a>
+-->
+
+<!-- button Sidebar -->
+{% block body-sidebar %}
+<div class="d-grid gap-2">
+    <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
+    {% if request.user.is_superuser %}
+        <a href="{% url 'admin:index' %}" target="_blank" class="btn btn-outline-secondary btn-sm mb-3">Admin</a>
+    {% else %}
+        <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#supportModal">Support</button>
+    {% endif %}
+</div>
+{% endblock body-sidebar %}
 
 <!-- footer coolor -->
 {% block footer %} style="color: #89cff0; text-decoration: none; "> {% endblock footer %}
@@ -55,32 +73,36 @@
         <table class="table table-bordered table-sm mt-4" style="text-align: center; font-size: 14px;">
             <thead class="table-secondary">
                 <tr>
-                    <th style="width: 21%;">Name</th>
+                    <th style="width: 5%;">Id</th>
+                    <th style="width: 25%;">Name</th>
+                    <th style="width: 23%;">Email</th>
                     <th style="width: 15%;">Phone</th>
-                    <th style="width: 21%;">Email</th>
-                    <th style="width: 8%;">Age</th>
-                    <th style="width: 7%;">Gender</th>
-                    <th style="width: 18%;">Registered</th>
-                    {% if request.user.is_superuser %}
+                    <th style="width: 5%;">Age</th>
+                    <th style="width: 5%;">Gender</th>
+                    <th style="width: 12%;">Registered</th>
+                    
                     <th style="width: 10%;" colspan="2">Action</th>
-                    {% endif %}
+                    
+                    <!--{% if request.user.is_superuser %}{% endif %}-->
                 </tr>
             </thead>
             <!-- DATA FROM BACKEND -->
             {% for patient in patients %}
             <tr class="text-small" id="chk-td">
+                <td data-label="Id" id="top-table">{{ patient.id }}</td>
                 <td data-label="Name" id="top-table">{{ patient.name }}</td>
-                <td data-label="Phone" id="responsive-border">{{ patient.phone }}</td>
                 <td data-label="Email" id="responsive-border">{{ patient.email }}</td>
+                <td data-label="Phone" id="responsive-border">{{ patient.phone }}</td>
                 <td data-label="Age" id="responsive-border">{{ patient.age }}</td>
                 <td data-label="Gender" id="responsive-border">{{ patient.gender }}</td>
                 <td data-label="Date" id="responsive-border">{{ patient.created_at | date:'d/m/Y (H:i)'}}</td>
-                {% if request.user.is_superuser %}
+                
                 <td>
                     <a id="edit-btn" href="/patient/{{ patient.id }}" class="btn btn-outline-primary btn-sm" title="Edit Patient">
                         <i class="fas fa-pen"></i>
                     </a>
                 </td>                
+                {% if request.user.is_superuser %}
                 <td>               
                     <a id="delete-btn" class="btn btn-outline-danger btn-sm" title="Delete Patient" data-toggle="modal" data-target="#deleteModal{{ patient.pk }}">
                         <i class="fas fa-trash-alt"></i>
@@ -94,8 +116,8 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="deleteModalLabel"><i class="fas fa-user-slash"></i>&nbsp;&nbsp;Delete patient?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                                <!--<span aria-hidden="true">&times;</span>-->
                             </button>
                         </div>
                         <div class="modal-body text-center">
